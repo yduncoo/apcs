@@ -10,6 +10,6 @@ public class Tester
 
         myAccount.withdraw(100);
 
-        System.out.println("The Sally Jones account balance is, $" + myAccount.balance);
+        System.out.println("The " + myAccount.name + " account balance is, $" + myAccount.balance);
     }
 }
