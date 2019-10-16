@@ -2,26 +2,19 @@ public class Lab14c
 {
     public static void main(String[] args)
     {
-        double[] array = {-99, -84, -45, -4554, -541, -8742};
-        double x = 0;
-        double i = 1;
-        double big = array[(int)i - 1];
+        double[] array = {50.0, 100.0, 80.0};
+        double big = array[0];
 
-        for(; i < array.length; i++)
+        for(int i = 1; i < array.length; i++)
         {
-            double small = array[(int)i];
+            double small = array[i];
 
-            if(big > small)
-            {
-                big = big;
-            }
-            else
+            if(big < small)
             {
                 big = small;
             }
-            x = big;
         }
 
-        System.out.println("biggest = " + x);
+        System.out.println("biggest = " + big);
     }
 }
