@@ -18,20 +18,20 @@ public class Tester
         if(choice.equals("Deposit"))
         {
             System.out.println("Deposit amount: ");
-            myAccount.deposit(input.nextDouble());
-            System.out.println("The " + myAccount.name + " account balance is, $" + myAccount.balance);
+            myAccount.setDeposit(input.nextDouble());
+            System.out.println("The " + myAccount.getName() + " account balance is, $" + myAccount.getBalance());
         }
 
         if(choice.equals("Withdraw"))
         {
             System.out.println("Withdraw amount: ");
-            myAccount.withdraw(input.nextDouble());
-            System.out.println("The " + myAccount.name + " account balance is, $" + myAccount.balance);
+            myAccount.setWithdraw(input.nextDouble());
+            System.out.println("The " + myAccount.getName() + " account balance is, $" + myAccount.getBalance());
         }
 
         if(choice.equals("Balance"))
         {
-            System.out.println("The " + myAccount.name + " account balance is, $" + myAccount.balance);
+            System.out.println("The " + myAccount.getName() + " account balance is, $" + myAccount.getBalance());
         }
     }
 }
