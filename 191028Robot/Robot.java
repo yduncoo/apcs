@@ -73,7 +73,7 @@ public class Robot
                 pos -= 1;
             }
         }
-        if(forwardMoveBlocked())
+        else if(forwardMoveBlocked())
         {
             faceRight = !faceRight;
         }
