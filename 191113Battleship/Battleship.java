@@ -5,42 +5,62 @@ public class Battleship
 
     public Battleship()
     {
-        board = new int[5];
+        board = new int[15];
+        java.util.Arrays.fill(board, 0);
 
-        board[0] = 0;
-        board[1] = 1;
-        board[2] = 1;
-        board[3] = 1;
-        board[4] = 0;
+        for(int i = 0; i < board.length; i++)
+        {
+            int rndm = (int) (java.lang.Math.random() * 10);
+            if((rndm < 6) && (i < board.length - 2) && (board[i] == 0))
+            {
+                board[i] = 1;
+            }
+        }
+    }
+
+    public int start()
+    {
+        java.util.Scanner guess = new java.util.Scanner(System.in);
+
+        printBoard();
+
+        while(!gameOver())
+        {
+            System.out.print("Enter a guess: ");
+            int pos = guess.nextInt();
+
+            turn++;
+            
+            check(pos - 1);
+        }
+
+        return turn;
     }
 
     private void printBoard()
     {
+        System.out.println("");
+
         for(int i = 0; i < board.length; i++)
         {
-            System.out.print("[" + board[i] + "]");
+            System.out.print("[" + board[i] + "] ");
         }
+
         System.out.println("");
-    }
 
-    public int start(String p)
-    {
-        if(p.equals("Start"))
+        for(int i = 0; i < board.length; i++)
         {
-            java.util.Scanner guess = new java.util.Scanner(System.in);
-
-            while(!gameOver())
+            if(i < 9)
             {
-                System.out.print("Enter a guess: ");
-                int pos = guess.nextInt();
-
-                turn++;
-            
-                check(pos - 1);
+                System.out.print(" " + (i + 1) + "  ");
+            }
+            if(i > 8)
+            {
+                System.out.print(" " + (i + 1) + " ");
             }
         }
 
-        return turn;
+        System.out.println("");
     }
 
     private void check(int a)
@@ -48,13 +68,13 @@ public class Battleship
         if(board[a] == 1)
         {
             board[a] = -1;
+            System.out.println("Hit");
             printBoard();
-            System.out.println("Hit\n");
         }
         else
         {
+            System.out.println("Miss");
             printBoard();
-            System.out.println("Miss\n");
         }
     }
 
@@ -71,6 +91,4 @@ public class Battleship
         }
         return status;
     }
-
-
 }
