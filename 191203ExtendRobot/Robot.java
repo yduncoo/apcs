@@ -11,7 +11,7 @@ public class Robot
         facingRight = true;
     }
   
-    private boolean forwardMoveBlocked()
+    public boolean forwardMoveBlocked()
     {
         boolean blocked = false;
         if ( (pos == 0 && !facingRight) || (pos == hall.length - 1 && facingRight) )
@@ -19,7 +19,7 @@ public class Robot
         return blocked;
     }
     
-    private void move()
+    public void move()
     {
         if (hall[pos] > 0)
         {   hall[pos]--;   }
@@ -66,5 +66,35 @@ public class Robot
             }
         }
         return true;
+    }
+
+    public boolean getFacingRight()
+    {
+        return facingRight;
+    }
+
+    public void setFacingRight(boolean c)
+    {
+        facingRight = c;
+    }
+
+    public int getHall()
+    {
+        return hall[getPos()];
+    }
+
+    public int getPos()
+    {
+        return pos;
+    }
+
+    public void setHall(int a)
+    {
+        hall[getPos()] = a; 
+    }
+
+    public void setPos(int b)
+    {
+        pos = b;
     }
 }
