@@ -6,5 +6,8 @@ public class RoboTester
         int steps = joomba.clearHall();
         System.out.println("Joomba cleared the hall in " + steps + " moves.");
         
+        Robot twosucc = new HeavyDuty();
+        steps = twosucc.clearHall();
+        System.out.println("twosucc cleared the hall in " + steps + " moves.");
     }
 }
