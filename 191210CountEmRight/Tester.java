@@ -5,19 +5,27 @@ public class Tester
         java.util.Scanner kbin = new java.util.Scanner(System.in);
         String input = "";
 
-        while(input != "EXIT")
+        for(;;)
         {
             System.out.print("Type in a sentence and press ENTER. ");
 
             input = kbin.nextLine();
 
-            input = input.toUpperCase();
+            input = input.toUpperCase().replaceAll("\\s+","") + "!";
+                
+            if(input.contains("EXIT"))
+            {
+                return;
+            }
 
-            System.out.println(input);
-
-            String[] sp = input.split("SA");
-
-            System.out.println("There are " + (sp.length - 1) + " occurances.");
+            System.out.println("There are " + (chzeck(input)) + " occurances.\n");
         }
+    }
+
+    public static int chzeck(String req)
+    {
+        String[] sp = req.split("SA");
+
+        return(sp.length - 1);
     }
 }
