@@ -1,12 +1,26 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 public class Tester
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        java.util.Scanner kbin = new java.util.Scanner(System.in);
-        
-        String input = "";
+        //Scanner kbin = new Scanner(System.in);
+        File myfile = new File("README.TXT");
+        Scanner filereader = new Scanner(myfile);;
 
-        for(;;)
+        //try { Scanner filereader = new Scanner(myfile); }
+        //catch(IOException e) { System.out.println("File not found error!"); }
+
+        while (filereader.hasNext())
+        {
+            String line = filereader.nextLine();
+            System.out.println(dbl(line));
+        }
+
+        filereader.close();
+
+        /*for(;;)
         {
             System.out.print("Type in a sentence and press ENTER: ");
             
@@ -20,7 +34,7 @@ public class Tester
             }
 
             System.out.println(dbl(input));
-        }
+        }*/
     }
 
     public static String dbl(String a)
@@ -29,7 +43,7 @@ public class Tester
 
         String[] word = a.split("\\d+"); // logging all the places where the numbers were
 
-        int[] numI; // number converted from string to int
+        int[] numI = new int[numS.length]; // number converted from string to int
 
         // logs each integer in the sentence as an actual int to double
         for(int i = 0; i < numS.length; i++)
