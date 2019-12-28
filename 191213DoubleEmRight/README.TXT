@@ -1,1 +1,0 @@
-There was only enough pasta for 2 servings but there were 8 of them.
