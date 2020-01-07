@@ -11,13 +11,26 @@ public class Scaler
         System.out.print("Scale by what percent: ");
         double magnitude = kbin.nextInt() / 100;
 
-        FileWriter fw = new FileWriter(args[0] + "x" + magnitude + ".txt"); //change # to have magnitude altered
-        Printwriter output = new PrintWriter(fw);
+        FileWriter fw = new FileWriter(args[0] + "x" + (int)magnitude + ".java"); //change # to have magnitude altered
+        PrintWriter output = new PrintWriter(fw);
 
-        while(filereder.hasNext())
+        while(filereader.hasNext())
         {
             String line = filereader.nextLine();
-            output.println(rescaler(line));
+
+            if(line.matches(args[0]))
+            {
+                output.println("public class " + args[0] + "x" + (int)magnitude);
+            }
+            
+            if(line.matches("(.*)fill(.*)") || line.matches("(.*)add(.*)") || line.matches("(.*)draw(.*)") || line.matches("(.*)size(.*)"))
+            {
+                output.println(rescaler(line, magnitude));
+            }
+            else
+            {
+                output.println(line);
+            }
         }
 
         output.close();
@@ -25,7 +38,7 @@ public class Scaler
         filereader.close();
     }
 
-    public static String rescaler(String a)
+    public static String rescaler(String a, double b)
     {
         String[] numS = a.split("\\D+");
 
@@ -35,9 +48,9 @@ public class Scaler
 
         for(int i = 0; i < numS.length; i++)
         {
-            if(!num[i].equals(""))
+            if(!numS[i].equals(""))
             {
-                numI[i] =(int) (Integer.parseInt(numS[i]) * magnitude); //change the two to a magnitude chosen
+                numI[i] =(int) (Integer.parseInt(numS[i]) * b); //change the two to a magnitude chosen
             }
         }
 
@@ -53,7 +66,7 @@ public class Scaler
         {
             for(int i = 0; i < sleep; i++)
             {
-                if(i < numI.legnth && !numS[i].equals(""))
+                if(i < numI.length && !numS[i].equals(""))
                 {
                     whole = whole + numI[i];
                 }
