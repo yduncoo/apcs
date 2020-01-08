@@ -7,9 +7,9 @@ public class Scaler
         File myfile = new File(args[0] + ".java");
         Scanner filereader = new Scanner(myfile);
 
-        java.util.Scanner kbin = new java.util.Scanner(System.in);
+        Scanner kbin = new Scanner(System.in);
         System.out.print("Scale by what percent: ");
-        double magnitude = kbin.nextInt() / 100;
+        double magnitude = kbin.nextDouble() / 100;
 
         FileWriter fw = new FileWriter(args[0] + "x" + (int)magnitude + ".java"); //change # to have magnitude altered
         PrintWriter output = new PrintWriter(fw);
@@ -18,24 +18,31 @@ public class Scaler
         {
             String line = filereader.nextLine();
 
-            if(line.matches(args[0]))
+            if(line.matches("(.*)" + args[0]))
             {
                 output.println("public class " + args[0] + "x" + (int)magnitude);
+                continue;
             }
-            
-            if(line.matches("(.*)fill(.*)") || line.matches("(.*)add(.*)") || line.matches("(.*)draw(.*)") || line.matches("(.*)size(.*)"))
+            if(line.matches("(.*)\\.fill(.*)") || line.matches("(.*)\\.add(.*)") || line.matches("(.*)\\.draw(.*)") || line.matches("(.*)\\.setSize(.*)"))
             {
                 output.println(rescaler(line, magnitude));
+                continue;
+            }
+            if(line.equals(""))
+            {
+                continue;
             }
             else
             {
                 output.println(line);
+                continue;
             }
         }
 
         output.close();
         fw.close();
         filereader.close();
+        kbin.close();
     }
 
     public static String rescaler(String a, double b)
@@ -44,6 +51,11 @@ public class Scaler
 
         String[] word = a.split("\\d+");
 
+        for(int i = 0; i < word.length; i++) // word test
+        {
+            System.out.println("word: " + word[i]);
+        }
+
         int[] numI = new int[numS.length];
 
         for(int i = 0; i < numS.length; i++)
@@ -51,6 +63,7 @@ public class Scaler
             if(!numS[i].equals(""))
             {
                 numI[i] =(int) (Integer.parseInt(numS[i]) * b); //change the two to a magnitude chosen
+                System.out.println("int: " + numS[i]); // number test
             }
         }
 
@@ -62,7 +75,7 @@ public class Scaler
             sleep = numI.length;
         }
 
-        if(((int)a.charAt(0)) >= 65 && ((int)a.charAt(0)) <= 90 || ((int)a.charAt(0)) >= 97 && ((int)a.charAt(0)) <= 122)
+        if(((int)a.charAt(0)) >= 65 && ((int)a.charAt(0)) <= 90 || ((int)a.charAt(0)) >= 97 && ((int)a.charAt(0)) <= 122 || ((int)a.charAt(0) == 32))
         {
             for(int i = 0; i < sleep; i++)
             {
@@ -93,7 +106,6 @@ public class Scaler
                 }
             }
         }
-
         return whole;
     }
 }
