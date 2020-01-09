@@ -9,11 +9,9 @@
  * Then, draw a Christmas tree.  Or a snowflake?  Or something else holiday-/
  * vacation-/gonna-get-sleep-soon-related.
  */
-
 import javax.swing.*;  // for JFrame
 import java.awt.*;     // for Graphics and Container
-
-public class SampleGraphics
+public class SampleGraphicsM125
 {  
     public static void main (String[] args)
     {
@@ -22,8 +20,8 @@ public class SampleGraphics
         Graphics g;
       
         win = new JFrame("My First Graphics");  // window setup
-        int winSizeX = 800;
-        int winSizeY = 600;
+        int winSizeX = 1000;
+        int winSizeY = 750;
         win.setSize(winSizeX,winSizeY);
         win.setLocation(100,100);
         win.setVisible(true);
@@ -41,77 +39,76 @@ public class SampleGraphics
             for(int a = 0; a == 0;)
             {
                 g.setColor(new Color(135,206,235)); // background color
-
-                g.fillRect(0,0,800,600);   // fills background
+                g.fillRect(0,0,1000,750);   // fills background
         
                 g.setColor(new Color(212,255,253)); // snowglobe color
                
-                g.fillArc(150,260,500,500,0,180); // fills snowglobe (arc)
+                g.fillArc(187,325,625,625,0,180); // fills snowglobe (arc)
         
                 g.setColor(new Color(171,91,0)); // base color
                
                 // draw a base of snowglobe (trapezoid)
                 Polygon base = new Polygon(); //top line corner 1 & 2, bottom line corner 3 & 4
-                base.addPoint(150,510); // corner 1
-                base.addPoint(125,600); // corner 3
-                base.addPoint(675,600); // corner 4
-                base.addPoint(650,510); //corner 2
+                base.addPoint(187,637); // corner 1
+                base.addPoint(156,750); // corner 3
+                base.addPoint(843,750); // corner 5
+                base.addPoint(812,637); //corner 2
         
                 g.fillPolygon(base); // fills base
         
                 g.setColor(Color.WHITE); // snowman color
         
-                g.fillOval(410,410,100,100); // bottom snowman ball
-                g.fillOval(425,370,70,70); // middle snowman ball
-                g.fillOval(440,340,40,40); // top snowman ball
+                g.fillOval(512,512,125,125); // bottom snowman ball
+                g.fillOval(531,462,87,87); // middle snowman ball
+                g.fillOval(550,425,50,50); // top snowman ball
         
                 g.setColor(Color.ORANGE); // carrot nose color
         
                 Polygon nose = new Polygon();
-                nose.addPoint(420,353);
-                nose.addPoint(445,360);
-                nose.addPoint(445,350);
+                nose.addPoint(525,441);
+                nose.addPoint(556,450);
+                nose.addPoint(556,437);
         
                 g.fillPolygon(nose); // fills nose
         
                 g.setColor(Color.BLACK);
         
-                g.fillRect(450,310,20,30); // top hat
-                g.fillRect(440,335,40,10);
+                g.fillRect(562,387,25,37); // top hat
+                g.fillRect(550,418,50,12);
         
-                g.fillOval(450,350,7,7); // eye
+                g.fillOval(562,437,8,8); // eye
         
-                g.fillOval(455,380,7,7); // button top
-                g.fillOval(455,390,7,7); // button middle
-                g.fillOval(455,400,7,7); // button bottom
+                g.fillOval(568,475,8,8); // button top
+                g.fillOval(568,487,8,8); // button middle
+                g.fillOval(568,500,8,8); // button bottom
         
-                g.drawArc(150,260,500,500,0,180); // snowglobe outline
+                g.drawArc(187,325,625,625,0,180); // snowglobe outline
         
                 Polygon oBase = new Polygon();
-                oBase.addPoint(150,510); // corner 1
-                oBase.addPoint(125,600); // corner 3
-                oBase.addPoint(675,600); // corner 4
-                oBase.addPoint(650,510); //corner 2
+                oBase.addPoint(187,637); // corner 1
+                oBase.addPoint(156,750); // corner 3
+                oBase.addPoint(843,750); // corner 5
+                oBase.addPoint(812,637); //corner 2
         
                 g.drawPolygon(oBase); // outlines base
         
                 g.setColor(Color.GREEN);
         
-                g.fillRect(270,400,100,109); // present box
+                g.fillRect(337,500,125,136); // present box
         
                 g.setColor(Color.RED);
         
-                g.fillRect(310,400,20,109); // present ribbon
+                g.fillRect(387,500,25,136); // present ribbon
         
                 Polygon bow = new Polygon();
-                bow.addPoint(305,385);
-                bow.addPoint(300,390);
-                bow.addPoint(305,395);
-                bow.addPoint(320,400);
-                bow.addPoint(335,395);
-                bow.addPoint(340,390);
-                bow.addPoint(335,385);
-                bow.addPoint(320,395);
+                bow.addPoint(381,481);
+                bow.addPoint(375,487);
+                bow.addPoint(381,493);
+                bow.addPoint(400,500);
+                bow.addPoint(418,493);
+                bow.addPoint(425,487);
+                bow.addPoint(418,481);
+                bow.addPoint(400,493);
         
                 g.fillPolygon(bow); // fills bow
         
@@ -119,34 +116,28 @@ public class SampleGraphics
                 g.setColor(Color.WHITE);
         
                 int reset = 0;
-
                 // snow loop
                 for(int i = 0; i < winSizeX + 1; i++)
                 {
                     for(int j = 0; j < winSizeY + 1; j++)
                     {
                         try {Thread.sleep(100);} catch (Exception e) {}
-
                         int x = (int)(winSizeX * Math.random());
                         int y = (int)(winSizeY * Math.random());
-
                         int flakeX = 1;
                         int flip1 = (int)(10 * Math.random()); // coin flip for x offset
                         if (flip1 < 5)
                         {
                             flakeX = -1;
                         }
-
                         int flakeY = 1;
                         int flip2 = (int)(10 * Math.random()); // coin flip for y offset
                         if (flip2 < 5)
                         {
                             flakeY = -1;
                         }
-
                         g.fillOval(x, y, 3, 3);
-                        g.drawOval(x + flakeX, y + flakeY, 4, 4); // ensures every snow flake is "unique"
-
+                        g.drawOval(x + flakeX, y + flakeY, 5, 5); // ensures every snow flake is "unique"
                         reset++;
                         if(reset == 500) // resets at 500 snowflakes
                         {
