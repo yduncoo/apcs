@@ -24,15 +24,35 @@ public class RockPaperScissors
 		switch(rng)
 		{
 			case 1:
-				compChoice = "R";
+				compChoice = "rock";
 				break;
 			case 2:
-				compChoice = "P";
+				compChoice = "paper";
 				break;
 			case 3:
-				compChoice = "S";
+				compChoice = "scissors";
 				break;
 		}
+	}
+
+	public String determineWinner2()
+	{
+		String winner = "";
+		
+		if(playChoice.equals(compChoice))
+		{
+			winner = "tie";
+		}
+		else if(playChoice.length() > compChoice.length() || playChoice.equals("rock") && compChoice.equals("scissors"))
+		{
+			winner = "player wins";
+		}
+		else
+		{
+			winner = "computer wins";
+		}
+
+		return winner;
 	}
 
 	public String determineWinner()
