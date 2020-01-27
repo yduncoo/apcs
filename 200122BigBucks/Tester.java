@@ -10,7 +10,7 @@ public class Tester
         formatter.setMaximumFractionDigits(2);
         String name;
         //Instantiate an ArrayList object here called aryList
-        ArrayList aryList = new ArrayList();
+        ArrayList<BankAccount> aryList = new ArrayList<BankAccount>();
         do
         {
             Scanner kbReader = new Scanner(System.in);
@@ -30,10 +30,10 @@ public class Tester
         }while(!name.equalsIgnoreCase("EXIT"));
 
         //Search aryList and print out the name and amount of the largest bank account
-        BankAccount ba = aryList.get(0);//get first account in the list
+        BankAccount ba = aryList.get(0); //get first account in the list
         double maxBalance = ba.balance;
         String maxName = ba.name;
-        for(int j = 1; j < aryLst.size( ); j++)
+        for(int j = 1; j < aryList.size( ); j++)
         {
             /*
             ?
