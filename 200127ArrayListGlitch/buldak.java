@@ -15,19 +15,30 @@ public class buldak
         num.add(7);
         num.add(4);
 
-        for(int i = 1; i < num.size(); i++)
+        for(int i = 0; i < num.size(); i++)
         {
             System.out.print(num.get(i) + " ");
-            if(!(num.get(i) % 2 == 0))
-            {
-                num.remove(i);
-            }
         }
         System.out.println("");
 
-        for(int i = 1; I< num.size(); i++)
+        // consecutive odds are a curse
+        for(int j = 0; j < num.size(); j++)
         {
-            System.out.print(num.get(i) + " ");
+            if(num.get(j) % 2 != 0)
+            {
+                num.remove(j);
+                
+                if(num.get(j) % 2 != 0)
+                {
+                    num.remove(j);
+                }
+            }
         }
+
+        for(int k = 0; k < num.size(); k++)
+        {
+            System.out.print(num.get(k) + " ");
+        }
+        System.out.println("");
     }
 }
