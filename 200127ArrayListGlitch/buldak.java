@@ -8,7 +8,7 @@ public class buldak
         num.add(5);
         num.add(1);
         num.add(6);
-        num.add(8);
+        num.add(5);
         num.add(9);
         num.add(3);
         num.add(2);
@@ -24,14 +24,9 @@ public class buldak
         // consecutive odds are a curse
         for(int j = 0; j < num.size(); j++)
         {
-            if(num.get(j) % 2 != 0)
+            while(num.get(j) % 2 != 0)
             {
                 num.remove(j);
-                
-                if(num.get(j) % 2 != 0)
-                {
-                    num.remove(j);
-                }
             }
         }
 
