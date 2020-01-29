@@ -8,7 +8,7 @@ public class buldak
         num.add(5);
         num.add(1);
         num.add(6);
-        num.add(5);
+        num.add(8);
         num.add(9);
         num.add(3);
         num.add(2);
