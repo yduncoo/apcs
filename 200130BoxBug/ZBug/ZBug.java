@@ -3,32 +3,37 @@ public class ZBug extends Bug
 {
     private int steps;
     private int sideLength;
+    private int turnCount;
 
     public ZBug(int length)
     {
         steps = 0;
         sideLength = length;
+        turnCount = 1;
     }
 
     public void act()
     {
-
-        if(steps < sideLength && canMove())
+        if(getDirection() == 0)
+        {
+            turn();
+            turn();
+        }
+        else if(steps < sideLength && canMove())
         {
             move();
             steps++;
         }
-        if(steps == sideLegnth && canMove())
+        else if(steps == sideLength && canMove())
         {
-            if(getDirection() == 90)
+            if(turnCount == 1)
             {
                 turn();
                 turn();
                 turn();
                 steps = 0;
-                turnCount++;
             }
-            else
+            else if(turnCount == 2)
             {
                 turn();
                 turn();
@@ -37,6 +42,7 @@ public class ZBug extends Bug
                 turn();
                 steps = 0;
             }
+            turnCount++;
         }
         else
         {
