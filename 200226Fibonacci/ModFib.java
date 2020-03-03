@@ -1,5 +1,3 @@
-import java.util.EventListener;
-
 public class ModFib
 {
     public static int modFibonacci(int n)
