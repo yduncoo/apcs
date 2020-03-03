@@ -8,9 +8,9 @@ public class TowersOfHanoi
         }
         else
         {
-            moveOne(fromPost, sparePost);
+            towersOfHanoi(numDisks - 1, fromPost, sparePost, toPost);
             moveOne(fromPost, toPost);
-            moveOne(sparePost, toPost);
+            towersOfHanoi(numDisks - 1, sparePost, toPost, fromPost);
         }
     }
 
@@ -18,4 +18,6 @@ public class TowersOfHanoi
     {
         System.out.println(fromPost + " -- " + toPost);
     }
+
+    //idea for printing: char arrays, one for each column
 }
