@@ -19,5 +19,16 @@ public class TowersOfHanoi
         System.out.println(fromPost + " -- " + toPost);
     }
 
-    //idea for printing: char arrays, one for each column
+    /*
+    idea for printing: char arraylist, one for each post
+    post1 = 3, 2, 1 ; post2 = -, -, - ; post3 = -, -, -
+
+    rewrite moveOne
+
+    char arraylist instance variable for each post
+
+    use fill(postA, "-") for initializing posts 2 and 3
+    postX.remove(0) --then--> postY.add(0, prevDisk)
+    *make sure to print the char array backwards so that item(0) will be on top
+    */
 }
