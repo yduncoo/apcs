@@ -1,6 +1,6 @@
 public class DiskTracker
 {
-    public static void towersOfHanoi(int numDisks, int fromPost, int sparePost, int toPost)
+    public static void towersOfHanoi(int numDisks, int fromPost, int toPost, int sparePost)
     {
         if(numDisks == 1)
         {

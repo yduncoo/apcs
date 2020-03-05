@@ -13,21 +13,27 @@
 
 // how do i initialize post one with the total amount of disks
 // how to initialize moveCounter = 1
+import java.util.ArrayList;
 public class Graphical
 {
-    private int totalDisks;
     private int moveCounter;
-    private ArrayList<String> post1, post2, post3;
+    private ArrayList<Integer> post1, post2, post3;
 
+    // intializes the first post with all the disks and the first move in Counter
     public Graphical(int numDisks)
     {
-        for(int i = numDisks; i > 0; i--)
+        post1 = new ArrayList<Integer>();
+        for(int i = 1; i <= numDisks; i++)
         {
-            post1.add(0, i);
+            post1.add(i);
         }
+        post2 = new ArrayList<Integer>();
+        post3 = new ArrayList<Integer>();
+        
         moveCounter = 1;
     }
-    public void towersOfHanoi(int numDisks, int fromPost, int sparePost, int toPost)
+    
+    public void towersOfHanoi(int numDisks, int fromPost, int toPost, int sparePost)
     {
         if(numDisks == 1)
         {
@@ -43,88 +49,125 @@ public class Graphical
 
     private void moveOne(int fromPost, int toPost)
     {
-        tracker(fromPost, toPost); // prints out all towers graphically
-    }
-
-    // intializes the first post with all the disks
-    public void setPost(ArrayList<String> post, int length)
-    {
-        for(int i = 0; i < length; i++)
-        {
-            post.add(i, i + 1);
-        }
-    }
-
-    public void printPosts()
-    {
-        System.out.println("Move " + moveCounter);
-        //System.out.println(post1 + "--");
-        for(int i = post1.size() - 1; i > 0; i--)
-        {
-            System.out.print(post1.get(i));
-        }
-        System.out.print("--\n");
-        //System.out.println(post2 + "--");
-        for(int i = post2.size() - 1; i > 0; i--)
-        {
-            System.out.print(post2.get(i));
-        }
-        System.out.print("--\n");
-        //System.out.println(post3 + "--");
-        for(int i = post3.size() - 1; i > 0; i--)
-        {
-            System.out.print(post3.get(i));
-        }
-        System.out.print("--\n\n");
-
-        moveCounter++;
-    }
-
-    public void tracker(int fromPost, int toPost)
-    {
         // if statements to determine where to move each disk
         if(fromPost == 1 && toPost == 2)
         {
-            post2.add(0, post1.get(0));
+            if(post2.size() > 0)
+            {
+                post2.add(0, post1.get(0));
+            }
+            else if(post2.size() == 0)
+            {
+                post2.add(post1.get(0));
+            }
             post1.remove(0);
 
             printPosts();
         }
         else if(fromPost == 1 && toPost == 3)
         {
-            post3.add(0, post1.get(0));
+            if(post3.size() > 0)
+            {
+                post3.add(0, post1.get(0));
+            }
+            else if(post3.size() == 0)
+            {
+                post3.add(post1.get(0));
+            }            
             post1.remove(0);
 
-            printPost();
+            printPosts();
         }
         else if(fromPost == 2 && toPost == 1)
         {
-            post3.add(0, post1.get(0));
-            post1.remove(0);
+            if(post1.size() > 0)
+            {
+                post1.add(0, post2.get(0));
+            }
+            else if(post1.size() == 0)
+            {
+                post1.add(post2.get(0));
+            }            
+            post2.remove(0);
 
-            printPost();
+            printPosts();
         }
         else if(fromPost == 2 && toPost == 3)
         {
-            post3.add(0, post1.get(0));
-            post1.remove(0);
+            if(post3.size() > 0)
+            {
+                post3.add(0, post2.get(0));
+            }
+            else if(post3.size() == 0)
+            {
+                post3.add(post2.get(0));
+            }            
+            post2.remove(0);
 
-            printPost();
+            printPosts();
         }
         else if(fromPost == 3 && toPost == 1)
         {
-            post3.add(0, post1.get(0));
-            post1.remove(0);
+            if(post1.size() > 0)
+            {
+                post1.add(0, post3.get(0));
+            }
+            else if(post1.size() == 0)
+            {
+                post1.add(post3.get(0));
+            }            
+            post3.remove(0);
 
-            printPost();
+            printPosts();
         }
         else if(fromPost == 3 && toPost == 2)
         {
-            post3.add(0, post1.get(0));
-            post1.remove(0);
+            if(post2.size() > 0)
+            {
+                post2.add(0, post3.get(0));
+            }
+            else if(post2.size() == 0)
+            {
+                post2.add(post3.get(0));
+            }            
+            post3.remove(0);
 
-            printPost();
+            printPosts();
         }
         // etc...
+    }
+
+    public void printPosts()
+    {
+        System.out.println("Move " + moveCounter);
+
+        if(post1.size() > 0)
+        {
+            for(int i = post1.size() - 1; i >= 0; i--)
+            {
+                System.out.print(post1.get(i));
+            }
+        }
+        System.out.print("--\n");
+
+        if(post2.size() > 0)
+        {    
+            for(int i = post2.size() - 1; i >= 0; i--)
+            {
+                System.out.print(post2.get(i));
+            }
+        }
+        System.out.print("--\n");
+
+        if(post3.size() > 0)
+        {    
+            for(int i = post3.size() - 1; i >= 0; i--)
+            {
+                System.out.print(post3.get(i));
+            }
+        }
+        System.out.print("--\n\n");
+
+        moveCounter++;
     }
 }
