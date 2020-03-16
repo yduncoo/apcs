@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner6;
+
 public class MultiKeySort
 {
     public static void main(String[] args) throws IOException
@@ -32,31 +34,27 @@ public class MultiKeySort
 
     public static void sort(String[] list)
     {
-        boolean loop;
-        do
+        for(int i = 0; i < list.length - 1; i++)
         {
-            loop = false;
-            for(int i = 0; i < list.length - 1; i++)
+            int min = i;
+            for(int j = i + 1; j < list.length - 1; j++)
             {
-                if(list[i].substring(0, list[i].lastIndexOf(" ")).compareTo(list[i + 1].substring(0, list[i + 1].lastIndexOf(" "))) > 0)
+                int comparison = (list[j].substring(0, list[j].lastIndexOf(" "))).compareTo(list[min].substring(0, list[min].lastIndexOf(" ")));
+                if(comparison < 0)
                 {
-                    String temp = list[i];
-                    list[i] = list[i + 1];
-                    list[i + 1] = temp;
-
-                    loop = true;
+                    min = j;
                 }
-                else if(list[i].compareTo(list[i + 1]) == 0)
+                else if(comparison == 0)
                 {
-                    if(Integer.parseInt(list[i].substring(list[i].lastIndexOf(" ") + 1)) < Integer.parseInt(list[i + 1].substring(list[i + 1].lastIndexOf(" ") + 1)))
+                    if(Integer.parseInt(list[j].substring(list[j].lastIndexOf(" ") + 1)) < Integer.parseInt(list[min].substring(list[min].lastIndexOf(" ") + 1)))
                     {
-                        String temp = list[i];
-                        list[i] = list[i + 1];
-                        list[i + 1] = temp;
+                        min = j;
                     }
                 }
+                String temp = list[i];
+                list[i] = list[min];
+                list[min] = temp;
             }
         }
-        while(loop);
     }
 }
