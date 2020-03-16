@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 import javax.lang.model.util.ElementScanner6;
@@ -11,16 +10,27 @@ public class MultiKeySort
         File myfile = new File("Names_ages.txt");
         Scanner filereader = new Scanner(myfile);
 
-        String[] list = new String[11];
+        FileInputStream fileStream = new FileInputStream(myfile);
+        InputStreamReader input = new InputStreamReader(fileStream);
+        BufferedReader reader = new BufferedReader(input);
+        
+        int lines = 0;
+        while(reader.readLine() != null)
+        {
+            lines++;
+        }
+        reader.close();
+
         int maxIndex = -1;
+        String[] list = new String[lines];
 
         while(filereader.hasNext())
         {
             maxIndex++;
             list[maxIndex] = filereader.nextLine();
-            //System.out.println(list[maxIndex]);
+            // System.out.println(list[maxIndex]);
         }
-        //System.out.println("*" + list.length);
+        // System.out.println("*" + list.length);
         filereader.close();
 
         sort(list);
@@ -35,10 +45,11 @@ public class MultiKeySort
 
     public static void sort(String[] list)
     {
-        for(int i = 0; i < list.length - 1; i++)
+        int min;
+        for(int i = 0; i < list.length; i++)
         {
-            int min = i;
-            for(int j = i + 1; j < list.length - 1; j++) // double sort loop
+            min = i;
+            for(int j = i + 1; j < list.length; j++) // double sort loop
             {
                 int comparison = (list[j].substring(0, list[j].lastIndexOf(" "))).compareTo(list[min].substring(0, list[min].lastIndexOf(" ")));
                 
@@ -55,9 +66,9 @@ public class MultiKeySort
                 }
             }
             // bubble sort
-            String temp = list[i];
-            list[i] = list[min];
-            list[min] = temp;
+            String temp = list[min];
+            list[min] = list[i];
+            list[i] = temp;
         }
     }
 }
