@@ -25,9 +25,10 @@ public class MultiKeySort
 
         sort(list);
 
+        System.out.println(" ");
         for(int i = 0; i < list.length; i++)
         {
-            System.out.println(list[i]);
+            System.out.println(list[i].substring(0, list[i].lastIndexOf(" ")) + "," + list[i].substring(list[i].lastIndexOf(" ")));
         }
         System.out.println(" ");
     }
@@ -37,24 +38,26 @@ public class MultiKeySort
         for(int i = 0; i < list.length - 1; i++)
         {
             int min = i;
-            for(int j = i + 1; j < list.length - 1; j++)
+            for(int j = i + 1; j < list.length - 1; j++) // double sort loop
             {
                 int comparison = (list[j].substring(0, list[j].lastIndexOf(" "))).compareTo(list[min].substring(0, list[min].lastIndexOf(" ")));
-                if(comparison < 0)
+                
+                if(comparison < 0) // name2 bigger than name1 -> set name1 to name2
                 {
                     min = j;
                 }
-                else if(comparison == 0)
+                else if(comparison == 0) // name the same -> compare numbers
                 {
                     if(Integer.parseInt(list[j].substring(list[j].lastIndexOf(" ") + 1)) < Integer.parseInt(list[min].substring(list[min].lastIndexOf(" ") + 1)))
                     {
                         min = j;
                     }
                 }
-                String temp = list[i];
-                list[i] = list[min];
-                list[min] = temp;
             }
+            // bubble sort
+            String temp = list[i];
+            list[i] = list[min];
+            list[min] = temp;
         }
     }
 }
