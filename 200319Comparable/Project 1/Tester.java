@@ -29,7 +29,7 @@ public class Tester
 
         for(int i = 0; i < ba.length; i++)
         {
-            System.out.println(ba[i].name + ">>>" + ba[i].balance);
+            System.out.println(ba[i].name + " >>> " + ba[i].balance);
         }
     }
 }
