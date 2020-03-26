@@ -138,4 +138,5 @@ public class nyoom
  * Processor: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz, 4001 Mhz, 4 Core(s), 8 Logical Processor(s)
  * Age: 5 years old
  * OS Name: Microsoft Windows 10 Home
+ * JDK: 11.0.6
  */
