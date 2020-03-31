@@ -8,7 +8,7 @@ public class nyoom
     {
         Scanner kbin = new Scanner(System.in);
         
-        System.out.print("Which optimization? ");
+        System.out.print("Select an optimization\n[1]\t[2]\t[3]\n> ");
         int choose = kbin.nextInt();
 
         System.out.print("What is the number? ");
@@ -54,7 +54,7 @@ public class nyoom
         while(d <= n / 2);
 
         long endTime = System.nanoTime();
-        long elapsedTime = endTime - startTime;
+        double elapsedTime = (endTime - startTime) / 1000000000.0;
 
         for(Long i : factors)
         {
@@ -62,7 +62,7 @@ public class nyoom
         }
         System.out.print(n);
 
-        System.out.println("\nYour algorithm took " + (elapsedTime) + "ns to run.");
+        System.out.println("\nYour algorithm took " + (elapsedTime) + " seconds to run.");
     }
 
     public static void two(long n)
@@ -85,7 +85,7 @@ public class nyoom
         while(d <= outside);
 
         long endTime = System.nanoTime();
-        long elapsedTime = endTime - startTime;
+        double elapsedTime = (endTime - startTime) / 1000000000.0;
 
         for(long i : factors)
         {
@@ -93,7 +93,7 @@ public class nyoom
         }
         System.out.print(n);
 
-        System.out.println("\nYour algorithm took " + (elapsedTime) + "ns to run.");
+        System.out.println("\nYour algorithm took " + (elapsedTime) + " seconds to run.");
     }
 
     public static void three(long n)
@@ -117,7 +117,7 @@ public class nyoom
         while(d <= last);
 
         long endTime = System.nanoTime();
-        long elapsedTime = endTime - startTime;
+        double elapsedTime = (endTime - startTime) / 1000000000.0;
 
         Collections.sort(factors);
         for(long i : factors)
@@ -126,7 +126,7 @@ public class nyoom
         }
         System.out.print(n);
 
-        System.out.println("\nYour algorithm took " + (elapsedTime) + "ns to run.");
+        System.out.println("\nYour algorithm took " + (elapsedTime) + " seconds to run.");
     }
 }
 
