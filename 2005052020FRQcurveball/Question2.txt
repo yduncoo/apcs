@@ -1,0 +1,18 @@
+Ethan Su
+AP Computer Science
+Period 6
+
+2020 Exam Sample Question 2
+
+(a)
+public static boolean isValid(int numWithCheckDigit)
+{
+	if(numWithCheckDigit % 10 == getCheck(numWithCheckDigit / 10))
+	{
+		return true;
+	}
+	return false;
+}
+
+(b)
+In the CheckDigit class I would implement a new private int wrongCounter and it would be instantiated in the constructor of CheckDigit class to be at a value of zero. Within the isValid method before it returns false it would increase the count of wrongCounter by one to indicate that the method had made an incorrect check with the digit.

@@ -1,0 +1,42 @@
+Ethan Su
+AP Computer Science
+Period 6
+
+2020 Exam Sample Question 1
+
+(a)
+public int countElectronicsByMaker(String maker)
+{
+	int count = 0;
+	for(Gizmo temp: purchases)
+	{
+		if(temp.isElectronic() && temp.getMaker().equals(maker))
+		{
+			count++;
+		}
+	}
+	
+	return count;
+}
+
+(b)
+public boolean hasAdjacentEqualPair()
+{
+	if(purchases.length < 2)
+	{
+		return false;
+	}
+	for(int i = 1; i < purchases.length; i++)
+	{
+		if(purchases.get(i - 1).equals(purchases.get(i))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+(c)
+public Gizmo getCheapestGizmoByMaker()
+
+There would be a new private int in the Gizmo class called price which would be instantiated in the constructor class of Gizmo. There would also be a new method in the Gizmo class called getPrice in order to retrieve the new private price int.
