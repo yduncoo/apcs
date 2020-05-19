@@ -1,0 +1,18 @@
+public int[] copyEndy(int[] nums, int count) {
+  int[] endies = new int[count];
+  int index = 0;
+  for(int i = 0; index < count; i++)
+  {
+    if(isEndy(nums[i]))
+    {
+      endies[index] = nums[i];
+      index++;
+    }
+  }
+  return endies;
+}
+
+public boolean isEndy(int n)
+{
+  return 0 <= n && n <= 10 || 90 <= n && n <= 100;
+}

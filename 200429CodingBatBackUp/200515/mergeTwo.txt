@@ -1,0 +1,31 @@
+public String[] mergeTwo(String[] a, String[] b, int n) {
+  String[] combined = new String[n];
+  int index = 0;
+  int i = 0;
+  int j = 0;
+  while(index < n)
+  {
+    int com = a[i].compareTo(b[j]);
+    
+    if(com == 0)
+    {
+      combined[index] = a[i];
+      index++;
+      i++;
+      j++;
+    }
+    else if(com < 0)
+    {
+      combined[index] = a[i];
+      index++;
+      i++;
+    }
+    else if(com > 0)
+    {
+      combined[index] = b[j];
+      index++;
+      j++;
+    }
+  }
+  return combined;
+}
